@@ -1,0 +1,102 @@
+.wellness-card {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.wellness-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.wellness-header h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wellness-header h3 i {
+    color: #f43f5e;
+}
+
+.wellness-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.wellness-badge.green {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.wellness-badge.orange {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.wellness-badge.red {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.wellness-stats {
+    margin-bottom: 1rem;
+}
+
+.w-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+}
+
+.w-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-1);
+}
+
+.w-label {
+    font-size: 0.8rem;
+    color: var(--text-3);
+}
+
+.w-meter {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.w-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.wellness-msg {
+    font-size: 0.85rem;
+    color: var(--text-2);
+    margin: 0;
+    line-height: 1.5;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.wellness-msg i {
+    margin-top: 0.2rem;
+    color: var(--blue);
+}

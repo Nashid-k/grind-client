@@ -1,0 +1,73 @@
+.date-filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.date-preset-dropdown {
+    padding: 0.65rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-1);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+.date-preset-dropdown:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--blue);
+}
+
+.date-preset-dropdown:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.custom-date-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.date-input {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--text-1);
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.date-input:hover {
+    border-color: var(--blue);
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.date-separator {
+    color: var(--text-3);
+    font-size: 0.8rem;
+}

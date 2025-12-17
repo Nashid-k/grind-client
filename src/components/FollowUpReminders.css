@@ -1,0 +1,525 @@
+/* ============================================
+   FOLLOW-UP REMINDERS
+   ============================================ */
+
+.followup-container {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 1.25rem;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.followup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.followup-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin: 0;
+}
+
+.followup-header h3 i {
+    color: #f59e0b;
+}
+
+.followup-count {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+}
+
+.followup-badges {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.followup-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px;
+}
+
+.followup-badge.urgent {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.followup-badge.overdue {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+
+/* List */
+.followup-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.followup-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.followup-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+/* Reminder Card */
+.reminder-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    border-left: 3px solid;
+    transition: all 0.2s ease;
+}
+
+.reminder-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(3px);
+}
+
+.reminder-urgent {
+    border-left-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.reminder-overdue {
+    border-left-color: #f97316;
+    background: rgba(249, 115, 22, 0.04);
+}
+
+.reminder-upcoming {
+    border-left-color: #3b82f6;
+}
+
+.reminder-priority {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.reminder-urgent .reminder-priority {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.reminder-overdue .reminder-priority {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+
+.reminder-upcoming .reminder-priority {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.reminder-scheduled .reminder-priority {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.reminder-happened .reminder-priority {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+}
+
+.reminder-scheduled {
+    border-left-color: #10b981;
+    background: rgba(16, 185, 129, 0.04);
+}
+
+.reminder-happened {
+    border-left-color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.04);
+}
+
+.timer-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1rem 0.5rem;
+    margin-left: 0.5rem;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: monospace;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.reminder-btn-prep {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.reminder-btn-prep:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.reminder-overdue .reminder-priority {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+
+.reminder-upcoming .reminder-priority {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.reminder-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.reminder-company {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.reminder-company strong {
+    font-size: 0.9rem;
+    color: #f8fafc;
+}
+
+.reminder-role {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.reminder-message {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.reminder-action-hint {
+    font-size: 0.7rem;
+    color: #22c55e;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.reminder-action-hint i {
+    font-size: 0.65rem;
+}
+
+.reminder-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.reminder-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.875rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reminder-btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+}
+
+.reminder-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.reminder-btn-ghost {
+    background: transparent;
+    color: #64748b;
+    padding: 0.5rem;
+}
+
+.reminder-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+}
+
+/* Empty State */
+.followup-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #94a3b8;
+}
+
+.followup-empty i {
+    font-size: 2rem;
+    color: #22c55e;
+    margin-bottom: 0.75rem;
+}
+
+.followup-empty p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.followup-reset-btn {
+    margin-top: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.followup-reset-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+}
+
+/* ============================================
+   EMAIL TEMPLATE MODAL
+   ============================================ */
+
+.email-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.email-modal {
+    width: 100%;
+    max-width: 600px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(20px) scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.email-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.email-modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f8fafc;
+    margin: 0;
+}
+
+.email-modal-header h3 i {
+    color: #3b82f6;
+}
+
+.email-modal-close {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: #94a3b8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.email-modal-close:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.email-modal-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.email-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.email-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.email-field input,
+.email-field textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: #f8fafc;
+    font-size: 0.9rem;
+    font-family: inherit;
+    resize: none;
+}
+
+.email-field input:focus,
+.email-field textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.email-field textarea {
+    line-height: 1.6;
+}
+
+.email-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.email-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.email-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+}
+
+.email-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+}
+
+.email-btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+}
+
+.email-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .reminder-card {
+        flex-wrap: wrap;
+    }
+
+    .reminder-actions {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .reminder-btn-primary {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .email-modal-footer {
+        flex-direction: column;
+    }
+
+    .email-btn {
+        justify-content: center;
+    }
+}

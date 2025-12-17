@@ -1,0 +1,122 @@
+/* Daily Goal Redesign */
+.daily-goal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dg-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dg-title h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-1);
+}
+
+.streak-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(249, 115, 22, 0.15);
+    color: var(--orange);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+/* Target Widget New */
+.target-widget-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.target-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.target-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.target-val-group {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.current-val {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-1);
+}
+
+.sep {
+    color: var(--text-3);
+    font-size: 1.2rem;
+}
+
+.target-val {
+    font-size: 1.2rem;
+    color: var(--text-2);
+}
+
+.target-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem;
+    border-radius: 24px;
+}
+
+.target-edit-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.target-edit-btn:hover {
+    background: var(--blue);
+    color: white;
+}
+
+.edit-label {
+    font-size: 0.7rem;
+    color: var(--text-3);
+    font-weight: 600;
+    text-transform: uppercase;
+}

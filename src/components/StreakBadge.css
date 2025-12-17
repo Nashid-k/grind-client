@@ -1,0 +1,56 @@
+/* Streak Badge */
+.streak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.streak-badge.active {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 88, 12, 0.1));
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    color: #f97316;
+}
+
+.streak-badge.pending {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+.streak-badge i {
+    font-size: 0.9rem;
+}
+
+.streak-badge.active i {
+    color: #f97316;
+    animation: flamePulse 1s ease-in-out infinite;
+}
+
+@keyframes flamePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px #f97316);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 6px #f97316);
+    }
+}
+
+.streak-count {
+    font-weight: 700;
+}
+
+.streak-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.8;
+}

@@ -1,0 +1,81 @@
+/* ============================================
+   MOTIVATIONAL QUOTE STYLES
+   ============================================ */
+
+.motivational-quote {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: 14px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.motivational-quote.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.quote-icon {
+    color: #3b82f6;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-right: 0.5rem;
+}
+
+.quote-text {
+    display: inline;
+    color: #f8fafc;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.quote-author {
+    display: block;
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-top: 0.35rem;
+}
+
+.quote-refresh {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #64748b;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.quote-refresh:hover {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .motivational-quote {
+        padding: 0.875rem 1rem;
+    }
+
+    .quote-text {
+        font-size: 0.85rem;
+    }
+}

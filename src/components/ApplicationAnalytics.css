@@ -1,0 +1,443 @@
+/* ============================================
+   APPLICATION ANALYTICS - Glass Design
+   ============================================ */
+
+.analytics-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    animation: analyticsIn 0.5s ease;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+@keyframes analyticsIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.analytics-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-1);
+    margin: 0;
+}
+
+.analytics-header h2 i {
+    color: var(--blue);
+}
+
+.analytics-period {
+    font-size: 0.75rem;
+    color: var(--text-2);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+/* Stats Row */
+.analytics-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.analytics-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem;
+    background: var(--card);
+    /* Glass card */
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.analytics-stat:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.analytics-stat.blue .stat-icon {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--blue);
+}
+
+.analytics-stat.green .stat-icon {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--green);
+}
+
+.analytics-stat.gold .stat-icon {
+    background: rgba(251, 191, 36, 0.15);
+    color: var(--gold);
+}
+
+.analytics-stat.purple .stat-icon {
+    background: rgba(139, 92, 246, 0.15);
+    color: var(--purple);
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-1);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-2);
+}
+
+.stat-subvalue {
+    font-size: 0.7rem;
+    color: var(--text-3);
+    margin-top: 0.15rem;
+}
+
+.stat-trend {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.stat-trend.up {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--green);
+}
+
+.stat-trend.down {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--red);
+}
+
+/* Charts */
+.analytics-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+.chart-wide {
+    margin-bottom: 1rem;
+}
+
+.chart-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-2);
+    margin: 0 0 1rem 0;
+}
+
+.chart-card h3 i {
+    color: var(--purple);
+    font-size: 0.8rem;
+}
+
+/* Mini Bar Chart */
+.mini-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 120px;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+}
+
+.bar-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    min-width: 32px;
+}
+
+.bar-fill {
+    width: 100%;
+    \n max-width: 40px;
+    background: linear-gradient(180deg, var(--blue), var(--purple));
+    border-radius: 6px 6px 0 0;
+    min-height: 4px;
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: auto;
+}
+
+.bar-label {
+    font-size: clamp(0.6rem, 1.5vw, 0.65rem);
+    color: var(--text-3);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Funnel Chart */
+.funnel-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.funnel-stage {
+    display: grid;
+    grid-template-columns: 1fr 80px 45px;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.funnel-bar {
+    height: 28px;
+    background: linear-gradient(90deg, var(--blue), var(--purple));
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 0.75rem;
+    min-width: 40px;
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.funnel-value {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.funnel-label {
+    font-size: 0.75rem;
+    color: var(--text-2);
+}
+
+.funnel-rate {
+    font-size: 0.7rem;
+    color: var(--text-3);
+    text-align: right;
+}
+
+/* Insights */
+.analytics-insights {
+    margin-top: 1rem;
+}
+
+.analytics-insights h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-1);
+    margin: 0 0 1rem 0;
+}
+
+.analytics-insights h3 i {
+    color: var(--gold);
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+}
+
+.insight-card {
+    display: flex;
+    gap: 0.875rem;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.insight-card:hover {
+    transform: translateX(4px);
+}
+
+.insight-card.info {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.insight-card.success {
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.insight-card.warning {
+    background: rgba(249, 115, 22, 0.08);
+    border: 1px solid rgba(249, 115, 22, 0.15);
+}
+
+.insight-card.encouragement {
+    background: rgba(236, 72, 153, 0.08);
+    border: 1px solid rgba(236, 72, 153, 0.15);
+}
+
+.insight-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.insight-card.info .insight-icon {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--blue);
+}
+
+.insight-card.success .insight-icon {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--green);
+}
+
+.insight-card.warning .insight-icon {
+    background: rgba(249, 115, 22, 0.15);
+    color: var(--orange);
+}
+
+.insight-card.encouragement .insight-icon {
+    background: rgba(236, 72, 153, 0.15);
+    color: #ec4899;
+}
+
+.insight-content {
+    min-width: 0;
+}
+
+.insight-content strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-1);
+    margin-bottom: 0.2rem;
+}
+
+.insight-content p {
+    font-size: 0.75rem;
+    color: var(--text-2);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Empty State */
+.analytics-empty {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.analytics-empty i {
+    font-size: 3rem;
+    color: var(--blue);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+.analytics-empty h3 {
+    font-size: 1.25rem;
+    color: var(--text-1);
+    margin: 0 0 0.5rem;
+}
+
+.analytics-empty p {
+    color: var(--text-2);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .analytics-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .analytics-charts {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-stat {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stat-trend {
+        margin-top: 0.5rem;
+    }
+
+    .funnel-stage {
+        grid-template-columns: 1fr 60px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .analytics-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-stat {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .mini-bar-chart {
+        height: 100px;
+    }
+}

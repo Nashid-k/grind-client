@@ -1,0 +1,422 @@
+/* ============================================
+   GRIND MODE - Enhanced Pomodoro Timer
+   ============================================ */
+
+/* FAB Button */
+.grind-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grind-fab:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 30px rgba(245, 158, 11, 0.5);
+}
+
+.grind-fab.active {
+    animation: fabPulse 2s ease-in-out infinite;
+}
+
+@keyframes fabPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 30px rgba(245, 158, 11, 0.6);
+    }
+}
+
+.grind-fab i {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.grind-fab-timer {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: white;
+    margin-top: 2px;
+    font-family: monospace;
+}
+
+.grind-fab-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    background: #22c55e;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #1e293b;
+}
+
+/* Backdrop */
+.grind-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: grayscale(60%) blur(2px);
+    z-index: 998;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Main Widget */
+.grind-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 320px;
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    z-index: 1000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grind-widget:not(.break-mode) {
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.grind-widget.break-mode {
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header */
+.grind-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.grind-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.grind-title i {
+    color: var(--mode-color, #f59e0b);
+}
+
+.grind-minimize {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: var(--text-tertiary);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.grind-minimize:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* Mode Label */
+.grind-mode-label {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.grind-xp-multiplier {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: #fbbf24;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    animation: xpPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes xpPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 10px 2px rgba(251, 191, 36, 0.3);
+    }
+}
+
+/* Circular Timer */
+.grind-timer-wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.25rem;
+}
+
+.grind-timer-ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.grind-timer-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 6;
+}
+
+.grind-timer-progress {
+    fill: none;
+    stroke: var(--mode-color, #f59e0b);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    transition: stroke-dashoffset 0.5s ease;
+    filter: drop-shadow(0 0 8px var(--mode-color));
+}
+
+.grind-timer-display {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grind-time {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.grind-apps-count {
+    font-size: 0.8rem;
+    color: #22c55e;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+/* Goal Input */
+.grind-goal-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+.grind-goal-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.grind-goal-input:focus {
+    outline: none;
+    border-color: var(--mode-color, #f59e0b);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Active Goal */
+.grind-active-goal {
+    text-align: center;
+    color: var(--mode-color, #f59e0b);
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* Controls */
+.grind-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.grind-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grind-btn.primary {
+    background: linear-gradient(135deg, var(--mode-color, #f59e0b), color-mix(in srgb, var(--mode-color, #f59e0b), black 20%));
+    border: none;
+    color: white;
+}
+
+.grind-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+}
+
+.grind-btn.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.grind-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.grind-btn.icon {
+    flex: 0;
+    width: 48px;
+    padding: 0;
+}
+
+/* Daily Progress */
+.grind-daily-progress {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.grind-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.grind-progress-header span:first-child {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.grind-progress-count {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
+.grind-progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.grind-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #22c55e);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.grind-focus-time {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+.grind-focus-time i {
+    font-size: 0.7rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .grind-widget {
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+        bottom: 1rem;
+    }
+
+    .grind-timer-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+
+    .grind-time {
+        font-size: 2rem;
+    }
+
+    .grind-fab {
+        bottom: 1rem;
+        right: 1rem;
+        width: 52px;
+        height: 52px;
+    }
+}
