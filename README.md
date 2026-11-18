@@ -1,64 +1,46 @@
-<!-- ══════════════════════════════════════════════════════════════════ -->
-<!--                     NASHID K  —  PROJECT METRICS                   -->
-<!-- ══════════════════════════════════════════════════════════════════ -->
+# Grind — Job Search & Career Progress Platform
 
-# 🚀 Grind-client
+Grind is a React-based job-tracking application with a companion Express API. It combines job-application management with preparation, challenges, social accountability, and leaderboard features.
 
-<p align="center">
-  ![](https://img.shields.io/badge/React-18.x-61DAFB?style=flat-square&logo=react) 
-</p>
+## Repositories
 
-<p align="center">
-  <strong>A modern web application built with JavaScript.</strong>
-</p>
+- **Web client:** [Nashid-k/grind-client](https://github.com/Nashid-k/grind-client)
+- **API server:** [Nashid-k/grind-server](https://github.com/Nashid-k/grind-server)
 
----
+## Product areas
 
-## 📌 Project Overview
-This repository contains **Grind-client**, engineered with modern design standards, modular structures, and clean coding architectures.
+- Landing, sign-in, and authenticated dashboard experiences
+- Job tracking workflows
+- Preparation resources and challenges
+- Friends and social accountability
+- Leaderboard
+- Focus timer (Grind Mode)
 
-### ✨ Core Features
-*   **Responsive Design:** Optimized layout for mobile, tablet, and desktop views.
-*   **Clean Codebase:** Highly organized module structures for easy navigation.
+The client uses React 18, React Router, and Vite. Pages are lazy-loaded and authenticated routes are protected through shared authentication context.
 
----
+## Local development
 
-## 📂 Project Architecture
+```bash
+git clone https://github.com/Nashid-k/grind-client.git
+cd grind-client
+npm install
+npm run dev
+```
+
+Create a production build with `npm run build` and preview it with `npm run preview`.
+
+## Repository structure
 
 ```text
 src/
-├── components/   # UI presentation elements
-├── config/       # Environment setup and server configurations
-├── routes/       # REST API endpoints
-└── App.js        # Core mounting file
+├── components/   # Shared UI and Grind Mode timer
+├── context/      # Authentication and job state providers
+├── data/         # Application data
+├── pages/        # Landing, login, dashboard, welcome, leaderboard
+├── App.jsx       # Routes, providers, and lazy-loaded pages
+└── main.jsx      # Client entry point
 ```
 
----
+## Security and maintenance
 
-## ⚙️ Local Development Setup
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/Nashid-k/Grind-client.git
-   cd Grind-client
-   ```
-
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Configure Environment:**
-   *(If applicable, copy the `.env.example` file to `.env` and fill in variables)*
-
-4. **Start local dev server:**
-   ```bash
-   npm run dev
-   ```
-
----
-
-## 🛡️ Security & Best Practices Implemented
-*   **Strict Separations:** Modular separation between config, logic, and view components.
-*   **Environment Configuration:** Secure variables kept out of repository scopes via dotenv.
-*   **Git Standards:** Maintained clean histories and semantic commit protocols.
+Do not commit `.env` files, build output, or dependency directories. Keep API configuration and credentials out of source control.
